@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Link gekopieerd</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .message {
+      padding: 1em;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="message" id="message">Link wordt gekopieerd…</div>
+
+  <script>
+    // Haal de link op uit de querystring: ?link=https://...
+    const params = new URLSearchParams(window.location.search);
+    const link = params.get("link");
+
+    if (link) {
+      navigator.clipboard.writeText(link).then(() => {
+        document.getElementById("message").textContent = "Link gekopieerd naar het klembord!";
+        setTimeout(() => window.close(), 2000);
+      }).catch(err => {
+        document.getElementById("message").textContent = "Kopiëren mislukt: " + err;
+      });
+    } else {
+      document.getElementById("message").textContent = "Geen link gevonden in de URL.";
+    }
+  </script>
+</body>
+</html>
