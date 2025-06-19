@@ -30,8 +30,8 @@
 
     if (link) {
       navigator.clipboard.writeText(link).then(() => {
-        document.getElementById("message").textContent = "Link gekopieerd naar het klembord!";
-        setTimeout(() => window.close(), 2000);
+        document.getElementById("message").textContent = "Link gekopieerd naar het klembord! Dit venster sluit automatisch.";
+        setTimeout(() => window.close(), 1000);
       }).catch(err => {
         document.getElementById("message").textContent = "Kopiëren mislukt: " + err;
       });
