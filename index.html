@@ -21,7 +21,11 @@
   </style>
 </head>
 <body>
-  <div class="message" id="message">Link wordt gekopieerd…</div>
+  <div class="message" id="message">
+    Link wordt gekopieerd…
+    <br>
+    <strong>Kom je voor het eerst op deze pagina? Sta dan toegang tot je klembord toe.</strong>
+  </div>
 
   <script>
     // Haal de link op uit de querystring: ?link=https://...
@@ -30,7 +34,7 @@
 
     if (link) {
       navigator.clipboard.writeText(link).then(() => {
-        document.getElementById("message").textContent = "Link gekopieerd naar het klembord! Dit venster sluit automatisch.";
+        document.getElementById("message").innerHTML = "<p>Link gekopieerd naar het klembord! Dit venster sluit automatisch.</p>";
         setTimeout(() => window.close(), 1000);
       }).catch(err => {
         document.getElementById("message").textContent = "Kopiëren mislukt: " + err;
